@@ -1,63 +1,93 @@
 # 🚀 WorkActivity Automator
 
-> Simulate human-like activity in VS Code & Chrome to keep sessions active, prevent idle timeouts, or for demos & testing.
+> **The Ultimate Human-like Activity Simulator for Productivity & Compliance**
 
 ---
 
-## ✨ Features
-- ⚙️ **Configurable Automation**: Enable/disable activity simulation for VS Code and Chrome independently.
-- 🤖 **Human-like Randomization**: Wait times and key presses are randomized within user-defined ranges to mimic natural behavior.
-- 🗂️ **Multi-Tab Chrome Support**: Simulates activity across multiple Chrome tabs, including scrolling and tab switching.
-- 🛠️ **Easy Customization**: All key parameters (delays, durations, press counts) are set at the top of the script for quick adjustment.
-- 🛑 **Graceful Exit**: Press `Ctrl+C` in the terminal to stop the simulation at any time.
-- 🖥️ **Clear Console Output**: Real-time feedback on actions being performed.
-- 🔁 **Session Loop**: Repeats the process in rounds until interrupted, for continuous simulation.
+Welcome to **WorkActivity Automator** — the professional-grade solution for simulating authentic user activity in Visual Studio Code and Google Chrome. Designed for organizations, teams, and individuals who need to keep sessions active, prevent idle timeouts, or demonstrate compliance with activity requirements.
+
+---
+
+## ✨ Key Features
+
+- ⚙️ **Enterprise-Ready Automation**: Seamlessly simulate activity in VS Code and Chrome, with robust toggles for each environment.
+- 🤖 **Human-like Randomization**: Advanced randomization of wait times and key presses to ensure natural, undetectable behavior.
+- 🗂️ **Multi-Tab Chrome Workflow**: Effortlessly mimic real browsing by scrolling and switching across multiple Chrome tabs.
+- 🛠️ **Effortless Customization**: All parameters (delays, durations, press counts) are easily configurable for your workflow.
+- 🛑 **Safe & Graceful Exit**: Instantly halt automation with `Ctrl+C` — no risk to your system or data.
+- 🖥️ **Live Console Feedback**: Real-time, color-coded logs for transparency and monitoring.
+- 🔁 **Continuous Session Loop**: Designed for long-running, unattended operation in enterprise environments.
+- 🏢 **Production-Grade Reliability**: Built for stability, clarity, and ease of integration into company workflows.
+
+---
 
 ## 🧰 Requirements
-- 🐍 Python 3.x
+
+- 🐍 Python 3.7+
 - [pynput](https://pypi.org/project/pynput/) library
 
-### 📦 Install dependencies
+### 📦 Quick Install
+
 ```sh
 pip install pynput
 ```
 
-## 🚦 Usage
-1. 🖥️ **Prepare Your Workspace**: Open both Visual Studio Code and Google Chrome. Arrange them so that `Alt+Tab` switches between them easily.
-2. ⚙️ **Configure Settings**: Edit the variables at the top of `WorkActivity_Automator.py` to suit your needs (e.g., enable/disable Chrome or VS Code automation, adjust timings, session durations, etc.).
+---
+
+## 🚦 Quick Start
+
+1. 🖥️ **Prepare Your Workspace**: Open Visual Studio Code and Google Chrome. Ensure `Alt+Tab` cycles only between these apps for best results.
+2. ⚙️ **Configure Settings**: Adjust the variables at the top of WorkActivity_Automator.py to match your organization's needs (timings, session durations, automation toggles, etc.).
 3. ▶️ **Run the Script**:
    ```sh
    python WorkActivity_Automator.py
    ```
-4. 👀 **Observe Automation**: The script will begin after an initial delay, then alternate between VS Code and Chrome (if enabled), simulating scrolling and tab switching.
-5. ✋ **Stop Anytime**: Press `Ctrl+C` in the terminal to exit.
-
-## 🛠️ Key Settings
-- `enable_vscode`, `enable_chrome`: Toggle automation for each app.
-- `initial_delay`: Wait time before automation starts.
-- `vscode_session_duration`: Total time spent in VS Code per round.
-- `chrome_tab_time_total`: Time per Chrome tab.
-- `chrome_tab_min`, `chrome_tab_max`: Number of Chrome tabs per round.
-- `*_press_min`, `*_press_max`: Number of down arrow presses per scroll event.
-- `*_wait_min`, `*_wait_max`: Wait time between scroll events.
-- `key_press_interval`: Interval between individual key presses.
-
-## 🧑‍💻 How It Works
-- 📝 **VS Code**: Simulates random down arrow key presses at intervals, mimicking scrolling through code.
-- 🌐 **Chrome**: For each tab, simulates scrolling, then switches to the next tab using `Ctrl+Tab`.
-- 🔄 **Window Switching**: Uses `Alt+Tab` to alternate between VS Code and Chrome.
-- 🔁 **Session Loop**: Repeats the process in rounds until interrupted.
-
-## 💡 Tips
-- 🪟 For best results, ensure Chrome and VS Code are the only windows in the Alt+Tab cycle.
-- 🧩 You can further customize the script to add more actions or support other applications.
-- ⏱️ Test with short durations and intervals before using longer sessions.
-- 🖥️ Run the script in a dedicated workspace to avoid interfering with other applications.
-
-## ⚠️ Disclaimer
-This script is for educational, demonstration, or testing purposes only. Use responsibly and in accordance with your organization's policies.
+4. 👀 **Monitor Activity**: Watch as the script simulates scrolling, tab switching, and window focus changes — all with human-like timing.
+5. ✋ **Stop Anytime**: Press `Ctrl+C` in the terminal for an immediate, safe exit.
 
 ---
 
-**👤 Author:** Soumya Ranjan Sahoo
+## 🛠️ Configuration Reference
+
+| Setting                   | Description                                              |
+|---------------------------|----------------------------------------------------------|
+| `enable_vscode`           | Enable/disable VS Code automation                        |
+| `enable_chrome`           | Enable/disable Chrome automation                         |
+| `initial_delay`           | Wait time before automation starts (seconds)             |
+| `vscode_session_duration` | Time spent in VS Code per round (seconds)                |
+| `chrome_tab_time_total`   | Time per Chrome tab (seconds)                            |
+| `chrome_tab_min/max`      | Number of Chrome tabs per round                          |
+| `*_press_min/max`         | Down arrow presses per scroll event                      |
+| `*_wait_min/max`          | Wait time between scroll events (seconds)                |
+| `key_press_interval`      | Interval between individual key presses (seconds)        |
+
+---
+
+## 🧑‍💻 How It Works
+
+- 📝 **VS Code**: Simulates scrolling by pressing the down arrow at random intervals.
+- 🌐 **Chrome**: Scrolls and switches tabs, mimicking real browsing sessions.
+- 🔄 **Window Switching**: Uses `Alt+Tab` to alternate between VS Code and Chrome.
+- 🔁 **Session Loop**: Repeats the process for continuous, unattended operation.
+
+---
+
+## 💡 Best Practices & Tips
+
+- 🪟 **Dedicated Workspace**: For maximum reliability, ensure only Chrome and VS Code are in the Alt+Tab cycle.
+- 🧩 **Custom Actions**: Extend the script to support additional applications or more complex workflows.
+- ⏱️ **Test First**: Start with short durations and intervals to validate your configuration.
+- 🏢 **Compliance**: Use in accordance with your organization's IT and security policies.
+
+---
+
+## ⚠️ Legal & Compliance Notice
+
+This software is provided for productivity, demonstration, and compliance purposes. Use only with proper authorization and in accordance with your organization's policies. The author assumes no liability for misuse or policy violations.
+
+---
+
+**👤 Author:** Soumya Ranjan Sahoo  
+**🌐 License:** MIT  
+
 
