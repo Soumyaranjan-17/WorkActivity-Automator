@@ -2,7 +2,7 @@ import time
 import random
 import sys
 from ascii_timer import print_big_timer
-from utility import press_down_arrow, press_ctrl_home, alt_tab, switch_to_next_tab, wait_with_countdown, ask_yes_no
+from utility import *
 
 
 # === CONFIGURABLE SETTINGS ===
