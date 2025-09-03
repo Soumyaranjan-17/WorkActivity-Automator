@@ -37,3 +37,21 @@ def wait_with_countdown(seconds, message="⏱️ Waiting"):
         sys.stdout.flush()
         time.sleep(1)
     print()  # move to new line after countdown
+
+def ask_yes_no(prompt, default="y"):
+    """Ask user yes/no and return True/False"""
+    choice = input(f"{prompt} (y/n) [default: {default}]: ").strip().lower()
+    if choice == "":
+        choice = default
+    return choice.startswith("y")
+
+# export all functions from utility.py
+__all__ = [
+    "press_key_combination",
+    "press_down_arrow",
+    "press_ctrl_home",
+    "switch_to_next_tab",
+    "alt_tab",
+    "wait_with_countdown",
+    "ask_yes_no"
+]

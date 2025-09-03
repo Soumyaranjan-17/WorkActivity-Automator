@@ -2,7 +2,7 @@ import time
 import random
 import sys
 from ascii_timer import print_big_timer
-from utility import press_down_arrow, press_ctrl_home, alt_tab, switch_to_next_tab, wait_with_countdown 
+from utility import press_down_arrow, press_ctrl_home, alt_tab, switch_to_next_tab, wait_with_countdown, ask_yes_no
 
 
 # === CONFIGURABLE SETTINGS ===
@@ -90,13 +90,6 @@ def main_simulator():
     print("🚀 Welcome to the Automated Work Activity Simulator!")
     print("💡 Keep your workspace ready (Chrome + VS Code) before starting.")
     print("The 1st window should be VS Code, 2nd should be Chrome.")
-
-    def ask_yes_no(prompt, default="y"):
-        """Ask user yes/no and return True/False"""
-        choice = input(f"{prompt} (y/n) [default: {default}]: ").strip().lower()
-        if choice == "":
-            choice = default
-        return choice.startswith("y")
 
     enable_vscode = ask_yes_no("👉 Do you want to enable VS Code automation?")
     enable_chrome = ask_yes_no("👉 Do you want to enable Chrome automation?")
