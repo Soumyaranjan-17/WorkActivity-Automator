@@ -1,21 +1,25 @@
 import time
 import random
 import sys
-from pynput.keyboard import Key, Controller
+from ascii_timer import print_big_timer
+from utility import press_down_arrow, press_ctrl_home, alt_tab, switch_to_next_tab, wait_with_countdown 
 
-keyboard = Controller()
 
 # === CONFIGURABLE SETTINGS ===
 # enable_vscode = False
 # enable_chrome = True
 
 initial_delay = 5  # Delay before the automation starts (in seconds)
+
 vscode_session_duration = 600
 chrome_tab_time_total = 60
+
 chrome_tab_switch_reserved = 4
 chrome_tab_session_duration = chrome_tab_time_total - chrome_tab_switch_reserved
 chrome_tab_min = 1
 chrome_tab_max = 3
+
+
 
 vscode_press_min = 2
 vscode_press_max = 8
@@ -28,40 +32,6 @@ chrome_wait_min = 8
 chrome_wait_max = 10
 
 key_press_interval = 0.3  # Applied globally
-
-# === LOW-LEVEL KEY UTILITIES ===
-def press_key_combination(*keys):
-    for key in keys:
-        keyboard.press(key)
-    time.sleep(0.1)
-    for key in reversed(keys):
-        keyboard.release(key)
-    time.sleep(0.3)
-
-def press_down_arrow():
-    keyboard.press(Key.down)
-    time.sleep(0.05)
-    keyboard.release(Key.down)
-    print("      ⬇️  Down arrow pressed")
-
-def press_ctrl_home():
-    print("      ⬆️  Moving to top of page (Ctrl + Home)")
-    press_key_combination(Key.ctrl, Key.home)
-
-def switch_to_next_tab():
-    print("      🔄 Switching to next Chrome tab (Ctrl + Tab)")
-    press_key_combination(Key.ctrl, Key.tab)
-
-def alt_tab():
-    print("      🔁 Toggling between windows (Alt + Tab)")
-    press_key_combination(Key.alt, Key.tab)
-
-def wait_with_countdown(seconds, message="⏱️ Waiting"):
-    for remaining in range(seconds, -1, -1):  # go down to 0
-        sys.stdout.write(f"\r{message}....{remaining} ")
-        sys.stdout.flush()
-        time.sleep(1)
-    print()  # move to new line after countdown
 
 
 
@@ -114,86 +84,6 @@ def control_chrome():
 
     print("✅ Completed activity in Chrome.\n")
 
-# === BIG ASCII NUMBERS ===
-BIG_NUMBERS = {
-    '0': [" ██████ ",
-          "██    ██",
-          "██    ██",
-          "██    ██",
-          " ██████ "],
-         
-    '1': ["   ██   ",
-          "  ███   ",
-          "   ██   ",
-          "   ██   ",
-          " ██████ "],
-         
-    '2': ["███████ ",
-          "     ██ ",
-          "███████ ",
-          "██      ",
-          "███████ "],
-         
-    '3': [" ██████ ",
-          "     ██ ",
-          " ██████ ",
-          "     ██ ",
-          " ██████ "],
-         
-    '4': ["██   ██ ",
-          "██   ██ ",
-          "███████ ",
-          "     ██ ",
-          "     ██ "],
-         
-    '5': ["███████ ",
-          "██      ",
-          "███████ ",
-          "     ██ ",
-          "███████ "],
-         
-    '6': ["███████ ",
-          "██      ",
-          "███████ ",
-          "██   ██ ",
-          "███████ "],
-         
-    '7': ["███████ ",
-          "     ██ ",
-          "    ██  ",
-          "   ██   ",
-          "  ██    "],
-         
-    '8': [" █████  ",
-          "██   ██ ",
-          " █████  ",
-          "██   ██ ",
-          " █████  "],
-         
-    '9': ["███████ ",
-          "██   ██ ",
-          "███████ ",
-          "     ██ ",
-          "███████ "],
-         
-}
-
-def print_big_timer(i, clear_lines=5):
-    """Print big ASCII countdown timer with clean refresh"""
-    num_str = str(i)
-    lines = [""] * 5
-    for digit in num_str:
-        digit_art = BIG_NUMBERS.get(digit, ["      "] * 5)
-        for idx in range(5):
-            lines[idx] += digit_art[idx] + "  "
-    timer_art = "\n".join(lines)
-
-    # Move cursor up & clear old output
-    sys.stdout.write("\033[F" * clear_lines)
-    sys.stdout.write("\033[J")
-
-    sys.stdout.write(f"{timer_art}\n")
-    sys.stdout.flush()
 
 # === MAIN SIMULATOR LOOP ===
 def main_simulator():
