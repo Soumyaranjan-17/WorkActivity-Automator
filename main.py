@@ -43,7 +43,7 @@ def control_vscode():
     while time.time() - start_time < vscode_session_duration:
         press_count = random.randint(vscode_press_min, vscode_press_max)
         wait_time = random.randint(vscode_wait_min, vscode_wait_max)
-        wait_with_countdown(wait_time, "   ⏱️ Waiting before scroll set")
+        wait_with_countdown(wait_time, "   💻 Waiting in Sublime Text")
 
         for _ in range(press_count):
             press_down_arrow()
@@ -60,7 +60,7 @@ def chrome_tab_session():
     while time.time() - tab_start < chrome_tab_session_duration:
         press_count = random.randint(chrome_press_min, chrome_press_max)
         wait_time = random.randint(chrome_wait_min, chrome_wait_max)
-        wait_with_countdown(wait_time, "   ⏱️ Waiting before scroll set")
+        wait_with_countdown(wait_time, "   🟠 Waiting in Chrome")
 
         for _ in range(press_count):
             press_down_arrow()
