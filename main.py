@@ -38,24 +38,6 @@ speedometer = {
     "chrome": (chrome_press_min + chrome_press_max) / 2 / ((chrome_wait_min + chrome_wait_max) / 2 + key_press_interval * ((chrome_press_min + chrome_press_max) / 2))
 }
 
-# === meLEVEL 2: VS CODE CONTROL ===
-# def control_vscode():
-#     print("\n🧠 Starting session in VS Code...")
-#     start_time = time.time()
-
-#     while time.time() - start_time < vscode_session_duration:
-#         press_count = random.randint(vscode_press_min, vscode_press_max)
-#         wait_time = random.randint(vscode_wait_min, vscode_wait_max)
-#         wait_with_countdown(wait_time, "   💻 Waiting in Sublime Text")
-
-#         for _ in range(press_count):
-#             press_down_arrow()
-#             time.sleep(key_press_interval)
-
-#     print("✅ Completed activity in VS Code.\n")
-
-
-# === LEVEL 3: CHROME TAB ACTIVITY ===
 def chrome_tab_session():
     print("   📑 Simulating scroll activity in current Chrome tab...")
     tab_start = time.time()
