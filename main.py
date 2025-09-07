@@ -3,40 +3,16 @@ import random
 import sys
 from ascii_timer import print_big_timer
 from utility import *
-
-
-initial_delay = 5  # Delay before the automation starts (in seconds)
-
-vscode_session_duration = 600
-chrome_tab_time_total = 60
-
-chrome_tab_switch_reserved = 4
-chrome_tab_session_duration = chrome_tab_time_total - chrome_tab_switch_reserved
-chrome_tab_min = 1
-chrome_tab_max = 3
-
-vscode_tab_switch_reserved = 4
-vscode_tab_session_duration = vscode_session_duration - vscode_tab_switch_reserved
-vscode_tab_min = 1
-vscode_tab_max = 3
-
-vscode_press_min = 2
-vscode_press_max = 8
-vscode_wait_min = 8
-vscode_wait_max = 13
-
-chrome_press_min = 2
-chrome_press_max = 5
-chrome_wait_min = 8
-chrome_wait_max = 10
-
-key_press_interval = 0.3  # Applied globally
-
+from configuration import *
 
 speedometer = {
     "vscode": (vscode_press_min + vscode_press_max) / 2 / ((vscode_wait_min + vscode_wait_max) / 2 + key_press_interval * ((vscode_press_min + vscode_press_max) / 2)),
     "chrome": (chrome_press_min + chrome_press_max) / 2 / ((chrome_wait_min + chrome_wait_max) / 2 + key_press_interval * ((chrome_press_min + chrome_press_max) / 2))
 }
+
+print(f"⚙️  Speedometer Settings:")
+print(f"   - VS Code: ~{speedometer['vscode']:.2f} key presses/sec")
+print(f"   - Chrome: ~{speedometer['chrome']:.2f} key presses/sec\n")
 
 def chrome_tab_session():
     print("   📑 Simulating scroll activity in current Chrome tab...")
