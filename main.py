@@ -19,7 +19,10 @@ chrome_tab_session_duration = chrome_tab_time_total - chrome_tab_switch_reserved
 chrome_tab_min = 1
 chrome_tab_max = 3
 
-
+vscode_tab_switch_reserved = 4
+vscode_tab_session_duration = vscode_session_duration - vscode_tab_switch_reserved
+vscode_tab_min = 1
+vscode_tab_max = 3
 
 vscode_press_min = 2
 vscode_press_max = 8
@@ -36,20 +39,20 @@ key_press_interval = 0.3  # Applied globally
 
 
 # === LEVEL 2: VS CODE CONTROL ===
-def control_vscode():
-    print("\n🧠 Starting session in VS Code...")
-    start_time = time.time()
+# def control_vscode():
+#     print("\n🧠 Starting session in VS Code...")
+#     start_time = time.time()
 
-    while time.time() - start_time < vscode_session_duration:
-        press_count = random.randint(vscode_press_min, vscode_press_max)
-        wait_time = random.randint(vscode_wait_min, vscode_wait_max)
-        wait_with_countdown(wait_time, "   💻 Waiting in Sublime Text")
+#     while time.time() - start_time < vscode_session_duration:
+#         press_count = random.randint(vscode_press_min, vscode_press_max)
+#         wait_time = random.randint(vscode_wait_min, vscode_wait_max)
+#         wait_with_countdown(wait_time, "   💻 Waiting in Sublime Text")
 
-        for _ in range(press_count):
-            press_down_arrow()
-            time.sleep(key_press_interval)
+#         for _ in range(press_count):
+#             press_down_arrow()
+#             time.sleep(key_press_interval)
 
-    print("✅ Completed activity in VS Code.\n")
+#     print("✅ Completed activity in VS Code.\n")
 
 
 # === LEVEL 3: CHROME TAB ACTIVITY ===
@@ -72,6 +75,25 @@ def chrome_tab_session():
     time.sleep(2)
     print("   ✅ Finished tab session.\n")
 
+def vscode_tab_session():
+    print("   💻 Simulating scroll activity in current VS Code tab...")
+    tab_start = time.time()
+
+    while time.time() - tab_start < vscode_tab_session_duration:
+        press_count = random.randint(vscode_press_min, vscode_press_max)
+        wait_time = random.randint(vscode_wait_min, vscode_wait_max)
+        wait_with_countdown(wait_time, "   🟢 Waiting in VS Code")
+
+        for _ in range(press_count):
+            press_down_arrow()
+            time.sleep(key_press_interval)
+
+    press_ctrl_home()
+    time.sleep(1)
+    switch_to_next_tab()
+    time.sleep(2)
+
+
 # === LEVEL 2: CHROME CONTROL ===
 def control_chrome():
     print("\n🌐 Switching to Chrome and starting activity...")
@@ -83,6 +105,17 @@ def control_chrome():
         chrome_tab_session()
 
     print("✅ Completed activity in Chrome.\n")
+
+def control_vscode():
+    print("\n💻 Switching to VS Code and starting activity...")
+    tab_count = random.randint(vscode_tab_min, vscode_tab_max)
+    print(f"   🔁 Will simulate work on {tab_count} VS Code tab(s).\n")
+
+    for tab_num in range(tab_count):
+        print(f"   ▶️ Starting VS Code Tab #{tab_num + 1}")
+        vscode_tab_session()
+
+    print("✅ Completed activity in VS Code.\n")
 
 
 # === MAIN SIMULATOR LOOP ===
