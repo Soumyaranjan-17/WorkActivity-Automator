@@ -5,10 +5,6 @@ from ascii_timer import print_big_timer
 from utility import *
 
 
-# === CONFIGURABLE SETTINGS ===
-# enable_vscode = False
-# enable_chrome = True
-
 initial_delay = 5  # Delay before the automation starts (in seconds)
 
 vscode_session_duration = 600
@@ -35,24 +31,6 @@ chrome_wait_min = 8
 chrome_wait_max = 10
 
 key_press_interval = 0.3  # Applied globally
-
-
-
-# === LEVEL 2: VS CODE CONTROL ===
-# def control_vscode():
-#     print("\n🧠 Starting session in VS Code...")
-#     start_time = time.time()
-
-#     while time.time() - start_time < vscode_session_duration:
-#         press_count = random.randint(vscode_press_min, vscode_press_max)
-#         wait_time = random.randint(vscode_wait_min, vscode_wait_max)
-#         wait_with_countdown(wait_time, "   💻 Waiting in Sublime Text")
-
-#         for _ in range(press_count):
-#             press_down_arrow()
-#             time.sleep(key_press_interval)
-
-#     print("✅ Completed activity in VS Code.\n")
 
 
 # === LEVEL 3: CHROME TAB ACTIVITY ===
