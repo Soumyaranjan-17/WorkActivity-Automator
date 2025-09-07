@@ -1,93 +1,135 @@
-# 🚀 WorkActivity Automator
 
-> **The Ultimate Human-like Activity Simulator for Productivity & Compliance**
 
----
+# 🚀 WorkActivity-Automator
 
-Welcome to **WorkActivity Automator** — the professional-grade solution for simulating authentic user activity in Visual Studio Code and Google Chrome. Designed for organizations, teams, and individuals who need to keep sessions active, prevent idle timeouts, or demonstrate compliance with activity requirements.
+Automate and simulate work activity in VS Code and Chrome using keyboard and mouse events. Useful for keeping sessions active, testing automation, or simulating user activity.
 
 ---
 
-## ✨ Key Features
+## 📚 Table of Contents
 
-- ⚙️ **Enterprise-Ready Automation**: Seamlessly simulate activity in VS Code and Chrome, with robust toggles for each environment.
-- 🤖 **Human-like Randomization**: Advanced randomization of wait times and key presses to ensure natural, undetectable behavior.
-- 🗂️ **Multi-Tab Chrome Workflow**: Effortlessly mimic real browsing by scrolling and switching across multiple Chrome tabs.
-- 🛠️ **Effortless Customization**: All parameters (delays, durations, press counts) are easily configurable for your workflow.
-- 🛑 **Safe & Graceful Exit**: Instantly halt automation with `Ctrl+C` — no risk to your system or data.
-- 🖥️ **Live Console Feedback**: Real-time, color-coded logs for transparency and monitoring.
-- 🔁 **Continuous Session Loop**: Designed for long-running, unattended operation in enterprise environments.
-- 🏢 **Production-Grade Reliability**: Built for stability, clarity, and ease of integration into company workflows.
+- [📖 Description](#description)
+- [✨ Features](#features)
+- [🛠️ Installation](#installation)
+- [🎮 Usage](#usage)
+- [⚙️ Configuration](#configuration)
+- [📂 File Overview](#file-overview)
+- [💡 Example Use Cases](#example-use-cases)
+- [👍 Pros & 👎 Cons](#pros--cons)
+- [🤝 Contributing](#contributing)
+- [📝 License](#license)
+- [📬 Contact](#contact)
 
 ---
 
-## 🧰 Requirements
+## 📖 Description
+
+WorkActivity-Automator is a Python tool that simulates user activity in VS Code and Chrome by automating keyboard and mouse events. It is designed to keep your sessions alive, test automation scripts, or simply have fun with workspace automation. 😄
+
+---
+
+## ✨ Features
+
+- 🤖 Simulates scrolling and tab switching in VS Code and Chrome
+- ⏱️ ASCII countdown timer before starting
+- 🛠️ Configurable session durations, tab counts, and key press intervals
+- 🧩 Interactive prompts to enable/disable automation for VS Code and Chrome
+- 🏎️ Speedometer for key presses per second
+- 🖱️ Mouse scroll automation example
+- 📦 Includes previous stable versions for reference
+
+---
+
+## 🛠️ Installation
+
+### Requirements
 
 - 🐍 Python 3.7+
-- [pynput](https://pypi.org/project/pynput/) library
+- 📦 `pynput` library
 
-### 📦 Quick Install
-
-```sh
+Install dependencies:
+```bash
 pip install pynput
 ```
 
 ---
 
-## 🚦 Quick Start
+## 🎮 Usage
 
-1. 🖥️ **Prepare Your Workspace**: Open Visual Studio Code and Google Chrome. Ensure `Alt+Tab` cycles only between these apps for best results.
-2. ⚙️ **Configure Settings**: Adjust the variables at the top of WorkActivity_Automator.py to match your organization's needs (timings, session durations, automation toggles, etc.).
-3. ▶️ **Run the Script**:
-   ```sh
-   python WorkActivity_Automator.py
-   ```
-4. 👀 **Monitor Activity**: Watch as the script simulates scrolling, tab switching, and window focus changes — all with human-like timing.
-5. ✋ **Stop Anytime**: Press `Ctrl+C` in the terminal for an immediate, safe exit.
-
----
-
-## 🛠️ Configuration Reference
-
-| Setting                   | Description                                              |
-|---------------------------|----------------------------------------------------------|
-| `enable_vscode`           | Enable/disable VS Code automation                        |
-| `enable_chrome`           | Enable/disable Chrome automation                         |
-| `initial_delay`           | Wait time before automation starts (seconds)             |
-| `vscode_session_duration` | Time spent in VS Code per round (seconds)                |
-| `chrome_tab_time_total`   | Time per Chrome tab (seconds)                            |
-| `chrome_tab_min/max`      | Number of Chrome tabs per round                          |
-| `*_press_min/max`         | Down arrow presses per scroll event                      |
-| `*_wait_min/max`          | Wait time between scroll events (seconds)                |
-| `key_press_interval`      | Interval between individual key presses (seconds)        |
+1. 🖥️ Ensure Chrome and VS Code are open (VS Code as the first window, Chrome as the second).
+2. ▶️ Run the main script:
+	```bash
+	python main.py
+	```
+3. 🤓 Follow the interactive prompts to enable/disable automation for VS Code and Chrome.
+4. 🔄 The script will simulate activity in the selected applications, switching tabs and scrolling as configured.
 
 ---
 
-## 🧑‍💻 How It Works
+## ⚙️ Configuration
 
-- 📝 **VS Code**: Simulates scrolling by pressing the down arrow at random intervals.
-- 🌐 **Chrome**: Scrolls and switches tabs, mimicking real browsing sessions.
-- 🔄 **Window Switching**: Uses `Alt+Tab` to alternate between VS Code and Chrome.
-- 🔁 **Session Loop**: Repeats the process for continuous, unattended operation.
+Edit `configuration.py` to adjust:
 
----
-
-## 💡 Best Practices & Tips
-
-- 🪟 **Dedicated Workspace**: For maximum reliability, ensure only Chrome and VS Code are in the Alt+Tab cycle.
-- 🧩 **Custom Actions**: Extend the script to support additional applications or more complex workflows.
-- ⏱️ **Test First**: Start with short durations and intervals to validate your configuration.
-- 🏢 **Compliance**: Use in accordance with your organization's IT and security policies.
+- ⏳ Initial delay before starting
+- 🕒 Session durations
+- 🗂️ Tab counts
+- ⌨️ Key press intervals
+- ⏱️ Wait times
 
 ---
 
-## ⚠️ Legal & Compliance Notice
+## 📂 File Overview
 
-This software is provided for productivity, demonstration, and compliance purposes. Use only with proper authorization and in accordance with your organization's policies. The author assumes no liability for misuse or policy violations.
+- `main.py`: 🚦 Main automation script. Handles user prompts, session logic, and orchestrates activity simulation.
+- `configuration.py`: ⚙️ Stores all configurable parameters (delays, durations, tab counts, intervals).
+- `utility.py`: 🧰 Provides keyboard utility functions (key combinations, tab switching, countdowns, etc.).
+- `ascii_timer.py`: ⏲️ Prints large ASCII countdown timers for visual feedback.
+- `mouse_controller.py`: 🖱️ Example script for mouse scroll automation.
+- `Old_Stable_version/`: 📦 Contains previous stable versions of the automator for reference.
 
 ---
 
-**👤 Author:** Soumya Ranjan Sahoo  
-**🌐 License:** MIT  
+## 💡 Example Use Cases
 
+- 🛡️ Keep your remote session alive (no more auto-logout!)
+- 🤪 Prank your friends by making their VS Code and Chrome go wild
+- 🧪 Test automation scripts for keyboard/mouse events
+- 🎬 Simulate user activity for demos or presentations
+- 🕵️‍♂️ Make your workspace look busy (we won't tell your boss 😉)
 
+---
+
+## 👍 Pros & 👎 Cons
+
+### 👍 Pros
+- 🚀 Easy to use
+- 🛠️ Highly configurable
+- 😃 Fun and interactive
+- 🌍 Open source — contributions welcome!
+
+### 👎 Cons
+- ⚠️ May interfere with your actual work if left running
+- 🐍 Requires Python and `pynput` installed
+- 💤 Not a replacement for real productivity
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! If you have suggestions, bug reports, or feature requests, please open an issue or submit a pull request. For major changes, please open a discussion first. Let's automate together! 🚀
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 📬 Contact
+
+Created by [Soumyaranjan-17](https://github.com/Soumyaranjan-17). For questions or collaboration, feel free to reach out via GitHub.
+
+---
+
+Happy automating! If you enjoyed this project, give it a ⭐ on GitHub and share with your friends! 😃
