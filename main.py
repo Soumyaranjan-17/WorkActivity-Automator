@@ -37,8 +37,12 @@ chrome_wait_max = 10
 key_press_interval = 0.3  # Applied globally
 
 
+speedometer = {
+    "vscode": (vscode_press_min + vscode_press_max) / 2 / ((vscode_wait_min + vscode_wait_max) / 2 + key_press_interval * ((vscode_press_min + vscode_press_max) / 2)),
+    "chrome": (chrome_press_min + chrome_press_max) / 2 / ((chrome_wait_min + chrome_wait_max) / 2 + key_press_interval * ((chrome_press_min + chrome_press_max) / 2))
+}
 
-# === LEVEL 2: VS CODE CONTROL ===
+# === meLEVEL 2: VS CODE CONTROL ===
 # def control_vscode():
 #     print("\n🧠 Starting session in VS Code...")
 #     start_time = time.time()
